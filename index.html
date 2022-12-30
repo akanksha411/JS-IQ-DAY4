@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DAY 4</title>
+</head>
+<style>
+  h2{
+        text-decoration: underline;
+        color: rgb(163, 75, 12);
+        
+    }
+    h3{
+        font-size: 19px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      color: darkblue;
+    }
+    pre{
+      font-size: 18px;
+     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+
+    }
+    </style>
+<body>
+    <h2>JS Interview preparation Day-4</h2>
+    <!-- <h3>1. Explain Local Scope, Block Scope, Functional Scope and Scope Chain in javascript</h3> -->
+    <!-- <pre></pre> -->
+    <h3>What is difference between null and undefined ?</h3>
+    <pre>
+Ans--> null means absence of value. We can assign a null to a variable with the intention. Whereas we get undefined when value is declared but not initialize.
+            typeof null is object whereas typeof undefined is undefined.
+            let num=null;                                                                       let y;
+            console.log(num) //null                                                 console.log(y);//undefined
+            console.log(typeof num)//object                                 console.log(typeof y)//undefined
+    </pre>
+    <h3>What is an event loop and call stack</h3>
+    <pre>
+Ans-->In JavaScript, the event loop is a mechanism that handles the execution of async code, such as callbacks and promises. 
+            It is responsible for scheduling tasks and executing them as soon as they are ready to run.
+            The event loop works in conjunction with the call stack, which is a data structure that stores the execution context of each function that is called in a program. 
+            When a function is called, its execution context is pushed onto the call stack. When the function returns, its execution context is popped off the call stack.
+            The event loop continuously checks the call stack and the task queue (which stores async tasks that are waiting to be executed). 
+            If the call stack is empty, the event loop takes the next task from the task queue and pushes its execution context onto the call stack. 
+            This process is repeated until there are no more tasks in the task queue.
+
+            Example:
+            function foo() {
+                console.log('foo');
+            }
+            function bar() {
+                console.log('bar');
+            }
+              
+            setTimeout(foo, 1000);
+            setTimeout(bar, 0);
+              
+            // Output:
+            // bar
+            // foo
+              
+              
+
+        
+    </pre>
+    <h3>4. What are promises and why do we need them?</h3>
+    <pre>
+Ans--> Promises are used to handle asynchronous operations in JavaScript.
+            They are easy to manage when dealing with multiple asynchronous operations where callbacks can create callback hell leading to unmanageable code. 
+            Example
+            let promise=()=>{
+                return new Promise(function(resolve, reject) {
+                error=false;
+                if(!error){
+                    resolve('promise success');
+                }
+                else {
+                    reject();
+                }
+                });
+                }	
+                promise().
+                    then(function (result) {
+                        console.log(result);
+                    }).
+                    catch(function () {
+                        console.log('Some error has occurred');
+                    });        
+    </pre>
+    <h3>5. What is promise chaining</h3>
+    <pre>
+ Ans-->Promise chaining is a technique for using Promises to chain together multiple asynchronous operations in a more readable and maintainable way.
+             In Promise chaining,the result of one Promise is passed to the next Promise in the chain,allowing you to chain together multiple asynchronous operations without nesting callback functions.
+            Example: 
+            function getData(success) {
+                return new Promise((resolve, reject) => {
+                  if (success) {
+                    resolve("Data retrieved successfully");
+                  } else {
+                    reject("Error: Could not retrieve data");
+                  }
+                });
+              }
+              
+              getData(true)
+                .then(value => {
+                  console.log(value); // Output: "Data retrieved successfully"
+                  return getData(false);
+                })
+                .then(value => {
+                  console.log(value); // This line will not be reached
+                })
+                .catch(error => {
+                  console.error(error); // Output: "Error: Could not retrieve data"
+                });          
+    </pre>
+    <h3>6. What is pure function</h3>
+    <pre>
+Ans-->A Pure Function is a function (a block of code) that always returns the same result if the same arguments are passed.
+            It does not depend on any state or data change during a program's execution. Rather, it only depends on its input arguments.
+                function add(x, y) {
+                    return x + y;
+                } 
+                console.log(add(1, 2));  // Output: 3
+                console.log(add(1, 2));  // Output: 3
+           
+        </pre>
+</body>
+</html>
